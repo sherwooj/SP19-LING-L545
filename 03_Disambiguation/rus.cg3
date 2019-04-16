@@ -1,0 +1,19 @@
+DELIMITERS = "." ;
+
+LIST DET = DET ;
+LIST PUNCT = PUNCT ;
+LIST ADP = ADP ;
+LIST Case=Nom = Case=Nom ;
+LIST VERB = VERB ;
+LIST Case=Acc = Case=Acc ;
+LIST VerbForm=Part = VerbForm=Part ;
+
+SECTION
+
+REMOVE DET IF (1C PUNCT) ;
+
+REMOVE Case=Nom IF (-1 ADP) ;
+
+REMOVE Case=Acc IF (NOT -1* VERB) ;
+
+SELECT DET IF (1C VerbForm=Part) ;
